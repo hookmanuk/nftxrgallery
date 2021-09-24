@@ -70,6 +70,7 @@
         var wallet = new URLSearchParams(window.location.search).get('wallet');
         if (wallet != null) {
             document.querySelector('#walletid').value = wallet;
+            document.querySelector('#policyselector').value = null;
         }
         else {
             var policy = new URLSearchParams(window.location.search).get('policy');
