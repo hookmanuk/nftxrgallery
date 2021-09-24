@@ -37,11 +37,11 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Published.loader.js";
+      var loaderUrl = buildUrl + "/nftxrgallery.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Published.data.unityweb",
-        frameworkUrl: buildUrl + "/Published.framework.js.unityweb",
-        codeUrl: buildUrl + "/Published.wasm.unityweb",
+        dataUrl: buildUrl + "/nftxrgallery.data.unityweb",
+        frameworkUrl: buildUrl + "/nftxrgallery.framework.js.unityweb",
+        codeUrl: buildUrl + "/nftxrgallery.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "NFT Web XR Gallery",
@@ -89,9 +89,9 @@
       //document.addEventListener('onARSupportedCheck', function (event) {
       //  enterARButton.disabled = !event.detail.supported;
       //}, false);
-      //document.addEventListener('onVRSupportedCheck', function (event) {
-      //  enterVRButton.disabled = !event.detail.supported;
-      //}, false);
+      document.addEventListener('onVRSupportedCheck', function (event) {
+        enterVRButton.disabled = !event.detail.supported;
+      }, false);
 
       //enterARButton.addEventListener('click', function (event) {
       //  unityInstance.Module.WebXR.toggleAR();
