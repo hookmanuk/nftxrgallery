@@ -25,11 +25,21 @@
           <button id="entervr" value="Enter VR" disabled>VR</button>
           <!--<button id="enterar" value="Enter AR" disabled>AR</button>-->          
           <div id="unity-build-title">
+              <label>Wallet</label>
+              <input id="walletid" onkeypress="javascript: if(event.keyCode == 13) document.location = document.location.toString().replace(document.location.search, '') + '?wallet=' + this.value;" placeholder="Enter address here" />
+              <label>Collection</label>
               <select id="policyselector" onchange="
     document.location = document.location.toString().replace(document.location.search, '') + '?policy=' + this.value
                 ">
+                  <option value="545dc1601b5d469508698f7966a3c1c8cf207073041ad84b28d373c1">Tiger Society</option>
+                  <option value="d5e6bf0500378d4f0da4e8dde6becec7621cd8cbf5cbb9b87013d4cc">Space Budz</option>
+                  <option value="b92f6473f18d4b78733d022fd89f3cacc1484fab6eddfd3c5d4b9494">Derp Birds</option>
+                  <option value="7a5a5c3757d33c2b2ff0b09405676e61f93d28b5d12805dd3320e31f">CryptoDino</option>
+                  <option value="0e14267a8020229adc0184dd25fa3174c3f7d6caadcb4425c70e7c04" selected>unsigned_algorithms</option>
+                  <option value="a5425bd7bc4182325188af2340415827a73f845846c165d9e14c5aed">Cardano City</option>
+                  <option value="f4988f549728dc76b58d7677849443caf6e5385dc67e6c25f6aa901e">Drunken Dragon</option>
+                  <option value="71c02bc12e578237ef87c1646d92a0de0cd51bd95d0158db6f206105">Cardoggos</option>
                   <option value="fbfa072b4493c0a17ac42ce9d9146804b342be4f898e269950182240">Adaz Nightmares</option>
-                  <option value="0e14267a8020229adc0184dd25fa3174c3f7d6caadcb4425c70e7c04">unsigned_algorithms</option>
                   <option value="8638ffe012ad4463aa87d1e92ca52ec7cd42fa1a6e7b1d73b95d3aad">Baby Monkeys</option>
               </select>
           </div>
@@ -57,7 +67,18 @@
       var unityInstance = null;
       
 
-      document.querySelector('#policyselector').value = new URLSearchParams(window.location.search).get('policy');
+        var wallet = new URLSearchParams(window.location.search).get('wallet');
+        if (wallet != null) {
+            document.querySelector('#walletid').value = wallet;
+        }
+        else {
+            var policy = new URLSearchParams(window.location.search).get('policy');
+            if (policy != null) {
+                document.querySelector('#policyselector').value = policy;
+            }
+        }
+      
+      
 
       canvasContainer.style.width = "500px";
       canvasContainer.style.height = "800px";
