@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | NFT Web XR Gallery</title>
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container">
+      <div id="unity-canvas-container">
+        <canvas id="unity-canvas" style="width: 100%; height: 100%;"></canvas>
+      </div>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-footer">
+          <div id="unity-webgl-logo"></div>
+          <div id="unity-fullscreen-button"></div>
+          <button id="entervr" value="Enter VR" disabled>VR</button>
+          <!--<button id="enterar" value="Enter AR" disabled>AR</button>-->          
+          <div id="unity-build-title">
+              <select id="policyselector" onchange="
+    document.location = document.location.toString().replace(document.location.search, '') + '?policy=' + this.value
+                ">
+                  <option value="fbfa072b4493c0a17ac42ce9d9146804b342be4f898e269950182240">Adaz Nightmares</option>
+                  <option value="0e14267a8020229adc0184dd25fa3174c3f7d6caadcb4425c70e7c04">unsigned_algorithms</option>
+                  <option value="8638ffe012ad4463aa87d1e92ca52ec7cd42fa1a6e7b1d73b95d3aad">Baby Monkeys</option>
+              </select>
+          </div>
+      </div>
+    </div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Published.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Published.data.unityweb",
+        frameworkUrl: buildUrl + "/Published.framework.js.unityweb",
+        codeUrl: buildUrl + "/Published.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "NFT Web XR Gallery",
+        productVersion: "0.1",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var canvasContainer = document.querySelector("#unity-canvas-container");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+        var fullscreenButton = document.querySelector("#unity-fullscreen-button");        
+      var unityInstance = null;
+      
+
+      document.querySelector('#policyselector').value = new URLSearchParams(window.location.search).get('policy');
+
+      canvasContainer.style.width = "500px";
+      canvasContainer.style.height = "800px";
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((instance) => {
+          unityInstance = instance;
+          loadingBar.style.display = "none";
+          if (fullscreenButton)
+          {
+            fullscreenButton.onclick = () => {
+              unityInstance.SetFullscreen(1);
+            };
+          }           
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+
+      //let enterARButton = document.getElementById('enterar');
+      let enterVRButton = document.getElementById('entervr');
+
+      //document.addEventListener('onARSupportedCheck', function (event) {
+      //  enterARButton.disabled = !event.detail.supported;
+      //}, false);
+      //document.addEventListener('onVRSupportedCheck', function (event) {
+      //  enterVRButton.disabled = !event.detail.supported;
+      //}, false);
+
+      //enterARButton.addEventListener('click', function (event) {
+      //  unityInstance.Module.WebXR.toggleAR();
+      //}, false);
+      enterVRButton.addEventListener('click', function (event) {
+        unityInstance.Module.WebXR.toggleVR();
+      }, false);
+    </script>
+  </body>
+</html>
