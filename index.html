@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | NFT Web XR Gallery</title>
     <meta name="description" content="">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P66SQ27CVW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-P66SQ27CVW');
+    </script>
+</head>
   <body>
     <div id="unity-container">
       <div id="unity-canvas-container">
@@ -36,16 +45,18 @@
                   <option value="15509d4cb60f066ca4c7e982d764d6ceb4324cb33776d1711da1beee">Baby Alien Club</option>
                   <option value="b92f6473f18d4b78733d022fd89f3cacc1484fab6eddfd3c5d4b9494">Derp Birds</option>
                   <option value="7a5a5c3757d33c2b2ff0b09405676e61f93d28b5d12805dd3320e31f">CryptoDino</option>
-                  <option value="0e14267a8020229adc0184dd25fa3174c3f7d6caadcb4425c70e7c04" selected>unsigned_algorithms</option>
+                  <option value="0e14267a8020229adc0184dd25fa3174c3f7d6caadcb4425c70e7c04">unsigned_algorithms</option>
                   <option value="f4988f549728dc76b58d7677849443caf6e5385dc67e6c25f6aa901e">Drunken Dragon</option>
                   <option value="71c02bc12e578237ef87c1646d92a0de0cd51bd95d0158db6f206105">Cardoggos</option>
                   <option value="16a2a21a7ed8a67c5254eda1f8d6041021b53f49ef53e18e3e572546">EntheosAI</option>
                   <option value="1f02ffd171edc73021154e4103ad1240eb188751ecb035d12f231756">Masked On Buttons</option>
                   <option value="fbfa072b4493c0a17ac42ce9d9146804b342be4f898e269950182240">Adaz Nightmares</option>
-                  <option value="8638ffe012ad4463aa87d1e92ca52ec7cd42fa1a6e7b1d73b95d3aad">Baby Monkeys</option>
+                  <option value="95c248e17f0fc35be4d2a7d186a84cdcda5b99d7ad2799ebe98a9865" selected>Aw0k3n Algorithms</option>
+                  <option value="928fc36daf2fc95a11bef3f4e32d32aa7029de38c48d6dc01314f0dc">Autre Coeur</option>
                   <option value="0d8d0a9ab73a1223bf0ce0c4cdd2ee6123301da92892459839394813">Arty Mc Fishell</option>
                   <option value="e5b485bb600291d4ce615e7d65798d53e2886fd641cf42bafec0717a">Machine Dreamz</option>
-                  
+                  <option value="8638ffe012ad4463aa87d1e92ca52ec7cd42fa1a6e7b1d73b95d3aad">Baby Monkeys</option>
+
               </select>
           </div>
       </div>
@@ -54,9 +65,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/nftxrgallery.loader.js";
       var config = {
-        dataUrl: buildUrl + "/nftxrgallery.data",
-        frameworkUrl: buildUrl + "/nftxrgallery.framework.js",
-        codeUrl: buildUrl + "/nftxrgallery.wasm",
+        dataUrl: buildUrl + "/nftxrgallery.data.unityweb",
+        frameworkUrl: buildUrl + "/nftxrgallery.framework.js.unityweb",
+        codeUrl: buildUrl + "/nftxrgallery.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "NFT Web XR Gallery",
